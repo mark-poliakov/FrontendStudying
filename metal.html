@@ -1,63 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="Mark">
-        <title>MusicHub | Metal</title>
-    </head>
-    <body bgcolor="#dedede">
-        <h1>MusicHub</h1>
-        <img src="assets/images/metal_music_2.jpg" align="right" alt="Metal Music">
-        <h2>Metal music</h2>
-        <hr>
-        <br>
-        <a href="index.html">MusicHub | Main Page</a>
-        <br>
-        <br>
-        <a href="index.html#listen_to_music">Listen to other music</a>
-        <br>
-        <br>
-        <table cellspacing="2" cellpadding="5" border="2" bordercolor="Black" bgcolor="Red">
-            <caption>Some metal songs</caption>
-            <colgroup span="1" bgcolor="#E5E5EF"></colgroup>
-            <colgroup span="3" bgcolor="GhostWhite"></colgroup>
-            <tr>
-                <th rowspan="2">Artist</th>
-                <th colspan="3">Song information</th>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <th>Album</th>
-                <th>Link <br>(YoutubeMusic)</th>
-            </tr>
-            <tr>
-                <td rowspan="3">Lost Society</td>
-                <td>Into Enernity</td>
-                <td>No Absolution</td>
-                <td><a href="https://music.youtube.com/watch?v=iGrDv5tJtI8&si=zJtGZ9KKZpaf0Vl0" target="_blank">Link</a></td>
-            </tr>
-            <tr>
-                <td>Awake</td>
-                <td>If The Sky Came Down</td>
-                <td><a href="https://music.youtube.com/watch?v=VI8HuQGtolA&si=l1nROs6zR-YHMTE2" target="_blank">Link</a></td>
-            </tr>
-            <tr>
-                <td>Is This What You Wanted</td>
-                <td>Is This What You Wanted</td>
-                <td><a href="https://music.youtube.com/playlist?list=OLAK5uy_noM102jWCNBQNhNl8RHHkboClJop-Wrag&si=17vwZ-brZSTo0BkJ" target="_blank">Link</a></td>
-            </tr>
-            <tr>
-                <td rowspan="2">Annisokay</td>
-                <td>Human</td>
-                <td>Human</td>
-                <td><a href="https://music.youtube.com/watch?v=cmfu3khyq98&si=u8TvXENmUWmRh1Tu" target="_blank">Link</a></td>
-            </tr>
-            <tr>
-                <td>Splinters</td>
-                <td>Splinters</td>
-                <td><a href="https://music.youtube.com/watch?v=8kxswX9Y1o8&si=a2wVVfutVNLQ221-" target="_blank">Link</a></td>
-            </tr>
-        </table>
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mark">
+    <title>MusicHub | Metal</title>
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <style>
+        table {
+            margin: 0 auto 2rem;
+            background-color: red;
+            border: 2px solid black;
+        }
+        td, th {
+            border: 2px solid black;
+        }
+        .metal-image {
+            width: 100%;
+            border-radius: 1rem;
+        }
+        a {
+            color: red;
+            font-style: italic;
+            font-weight: 400;
+        }
+    </style>
+</head>
+
+<body class="body__metal">
+    <header class="header">
+        <h1 class="header__logo">
+            MusicHub!
+        </h1>
+        <div class="header__links">
+            <a href="index.html#listen_to_music">Listen to other music</a>
+            <a href="index.html">MusicHub | Main Page</a>
+        </div>
+    </header>
+    <aside class="aside-right">
+        <ol type="I">
+            <li><a href="classical.html">Classical Music</a></li>
+            <li><a href="electronic.html">Electronic Music</a></li>
+            <li><a href="metal.html">Metal Music</a></li>
+        </ol>
+    </aside>
+    <main class="main" id="mainMetal">
+        <div class="container">
+            <h2>Metal music</h2>
+            <table cellspacing="2" cellpadding="5">
+                <caption>Some metal songs</caption>
+                <colgroup span="1" bgcolor="#E5E5EF"></colgroup>
+                <colgroup span="3" bgcolor="GhostWhite"></colgroup>
+                <tr>
+                    <th rowspan="2">Artist</th>
+                    <th colspan="3">Song information</th>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <th>Album</th>
+                    <th>Link <br>(YoutubeMusic)</th>
+                </tr>
+                <tr>
+                    <td rowspan="3">Lost Society</td>
+                    <td>Into Enernity</td>
+                    <td>No Absolution</td>
+                    <td><a href="https://music.youtube.com/watch?v=iGrDv5tJtI8&si=zJtGZ9KKZpaf0Vl0"
+                            target="_blank">Link</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Awake</td>
+                    <td>If The Sky Came Down</td>
+                    <td><a href="https://music.youtube.com/watch?v=VI8HuQGtolA&si=l1nROs6zR-YHMTE2"
+                            target="_blank">Link</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Is This What You Wanted</td>
+                    <td>Is This What You Wanted</td>
+                    <td><a href="https://music.youtube.com/playlist?list=OLAK5uy_noM102jWCNBQNhNl8RHHkboClJop-Wrag&si=17vwZ-brZSTo0BkJ"
+                            target="_blank">Link</a></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Annisokay</td>
+                    <td>Human</td>
+                    <td>Human</td>
+                    <td><a href="https://music.youtube.com/watch?v=cmfu3khyq98&si=u8TvXENmUWmRh1Tu"
+                            target="_blank">Link</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Splinters</td>
+                    <td>Splinters</td>
+                    <td><a href="https://music.youtube.com/watch?v=8kxswX9Y1o8&si=a2wVVfutVNLQ221-"
+                            target="_blank">Link</a>
+                    </td>
+                </tr>
+            </table>
+            <img class="metal-image" src="assets/images/metal_music.jpg" alt="Metal Music">
+        </div>
+    </main>
+</body>
+
 </html>

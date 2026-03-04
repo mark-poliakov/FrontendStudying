@@ -1,0 +1,202 @@
+:root {
+    --border-color: rgb(96, 96, 96);
+
+    --primary-color: rgb(255, 255, 255);
+
+    --header-height: 100px;
+    --aside-right-width: 300px;
+}
+
+* {
+    box-sizing: border-box;
+}
+body {
+    line-height: 1.5;
+    background-color: rgb(235, 235, 235);
+    margin: 0;
+}
+.body__image {
+    background-image: linear-gradient(to bottom, rgb(40, 40, 40), rgb(255, 255, 255));
+    background-repeat: no-repeat;
+}
+
+/* General Styles */
+h2 {
+    text-align: center;
+    text-decoration: overline;
+}
+ol {
+    font-size: 1.1rem;
+}
+a {
+    color: rgb(189, 69, 216); /*!important;*/
+    font-weight: bold;
+}
+a:focus {
+    color: rgb(117, 159, 210);
+}
+a:active {
+    color: rgb(210, 117, 181);
+}
+ul[type="square"] {
+    background-color: aliceblue;
+    border: 2px dashed black;
+}
+table {
+    margin: 0 auto;
+}
+tr {
+    text-align: center;
+}
+th {
+    background-color: rgb(212, 212, 212);
+}
+table, td, th {
+    border: 1px solid black;
+}
+
+/* --Container-- */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    height: 100%;
+    background-color: rgba(235, 235, 235, 0.7);
+    border-radius: 1rem;
+}
+
+/* Header */
+.header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: var(--header-height);
+    width: calc(100% - var(--aside-right-width));
+    padding: 0 10%;
+    z-index: 1000;
+
+    background-color: var(--primary-color); /*rgb(235, 180, 235)*/
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header::after {
+    content: "";
+    height: 2px;
+    width: 100%;
+    background-color: var(--border-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.header__logo {
+    font-size: 3rem;
+    text-shadow: 2px 2px 4px rgb(109, 0, 109), 2px 2px 2px rgb(109, 0, 109), 2px 2px 10px white;
+    color: black;
+    margin: auto 0;
+}
+.header__listenLink {
+    font-size: 1.5rem;
+    margin-right: 10%;
+}
+.header__links {
+    margin: auto 0;
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.header__links a {
+    margin: auto 0.5rem;
+    position: relative;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0.5rem;
+
+    border-radius: 1rem;
+    background-color: black;
+    color: var(--primary-color);
+    text-decoration: none;
+
+    transition: background-color linear 0.1s;
+}
+.header__links a:hover {
+    text-shadow: 1px 1px 5px white;
+    background-color: rgb(128, 128, 128);
+}
+.header__links a::after {
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: calc(100% - 2 * 0.5rem);
+    background-color: var(--primary-color);
+    left: 0.5rem;
+    bottom: 0.4rem;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity linear 0.1s;
+}
+.header__links a:hover::after {
+    opacity: 1;
+}
+
+/* Aside Right */
+.aside-right {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: var(--aside-right-width);
+    background-color: var(--primary-color); /* rgb(235, 180, 235) */
+    height: 100vh;
+    padding: 0 1rem;
+}
+.aside-right::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 2px;
+    height: 100%;
+    background-color: var(--border-color);
+}
+
+/* Main */
+.main {
+    margin-top: var(--header-height);
+    margin-right: var(--aside-right-width);
+    padding: 1rem 0;
+}
+#mainClassical {
+    background-image: url('/assets/images/classical_music.jpg'); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+    min-height: 100vh;
+}
+#mainMetal {
+    background-image: url('/assets/images/metal_music_bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+#mainElectronic {
+    background-image: url('/assets/images/electronic_music_bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.container :last-child {
+    margin-bottom: 0.5rem;
+}
+
+/* Listen */
+.listen {
+    position: relative;
+}
+.listen__anchor {
+    position: absolute;
+    top: calc(-1 * var(--header-height));
+}
