@@ -4,7 +4,9 @@
     --primary-color: rgb(255, 255, 255);
 
     --header-height: 100px;
+    --header-margin: 10px;
     --aside-right-width: 300px;
+    --aside-right-margin: 10px;
 }
 
 * {
@@ -54,6 +56,32 @@ th {
 table, td, th {
     border: 1px solid black;
 }
+.image__description > img {
+    padding: 0;
+    margin: 0;
+    border-radius: 1rem;
+}
+.image__description > p {
+    padding: 0;
+    margin: 0;
+    font-style: italic;
+}
+
+/* Specific styles */
+dt+dd {
+    color: rgb(55, 55, 55);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+}
+.definition > p {
+    text-align: justify;
+    text-justify: distribute;
+    background-color: rgb(205, 205, 205);
+    padding: 1rem;
+    border-radius: 1rem;
+    color: black;
+    font-style: normal;
+}
 
 /* --Container-- */
 .container {
@@ -61,7 +89,7 @@ table, td, th {
     margin: 0 auto;
     padding: 0 1rem;
     height: 100%;
-    background-color: rgba(235, 235, 235, 0.7);
+    background-color: rgba(235, 235, 235, 0.8);
     border-radius: 1rem;
 }
 
@@ -71,11 +99,11 @@ table, td, th {
     left: 0;
     top: 0;
     height: var(--header-height);
-    width: calc(100% - var(--aside-right-width));
+    width: 100%;
     padding: 0 10%;
     z-index: 1000;
 
-    background-color: var(--primary-color); /*rgb(235, 180, 235)*/
+    background-color: var(--primary-color);
 
     display: flex;
     justify-content: space-between;
@@ -98,17 +126,17 @@ table, td, th {
 }
 .header__listenLink {
     font-size: 1.5rem;
-    margin-right: 10%;
 }
 .header__links {
-    margin: auto 0;
+    margin: 0;
     height: var(--header-height);
+    
     display: flex;
     justify-content: space-around;
     align-items: center;
 
 }
-.header__links a {
+.header__links a { /* Context selector */
     margin: auto 0.5rem;
     position: relative;
     font-size: 1.5rem;
@@ -146,20 +174,13 @@ table, td, th {
 .aside-right {
     position: fixed;
     right: 0;
-    top: 0;
-    width: var(--aside-right-width);
+    top: var(--header-height);
+    width: calc(var(--aside-right-width) - 2 * var(--aside-right-margin));
     background-color: var(--primary-color); /* rgb(235, 180, 235) */
-    height: 100vh;
+    height: calc(100vh - var(--header-height) - 2 * var(--aside-right-margin));
     padding: 0 1rem;
-}
-.aside-right::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 2px;
-    height: 100%;
-    background-color: var(--border-color);
+    margin: var(--aside-right-margin);
+    border-radius: var(--aside-right-margin);
 }
 
 /* Main */
