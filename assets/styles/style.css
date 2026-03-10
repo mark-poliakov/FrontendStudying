@@ -33,12 +33,19 @@ ol {
 a {
     color: rgb(189, 69, 216); /*!important;*/
     font-weight: bold;
+    position: relative;
+}
+a:link {
+    border-top: dashed 1px black;
+}
+a:visited {
+    border-top: none !important;
+}
+a:active, a:hover {
+    color: rgb(210, 117, 181);   
 }
 a:focus {
     color: rgb(117, 159, 210);
-}
-a:active {
-    color: rgb(210, 117, 181);
 }
 ul[type="square"] {
     background-color: aliceblue;
@@ -56,15 +63,22 @@ th {
 table, td, th {
     border: 1px solid black;
 }
-.image__description > img {
+.image__description {
+    float: left;
+    margin-right: 2rem;
+    width: 300px;
+}
+.image__description img {
     padding: 0;
     margin: 0;
-    border-radius: 1rem;
+    width: 100%;
+    height: auto;
 }
-.image__description > p {
+.image__description p {
     padding: 0;
     margin: 0;
     font-style: italic;
+    text-align: center;
 }
 
 /* Specific styles */
@@ -104,19 +118,11 @@ dt+dd {
     z-index: 1000;
 
     background-color: var(--primary-color);
+    border-bottom: solid 2px var(--border-color);
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-.header::after {
-    content: "";
-    height: 2px;
-    width: 100%;
-    background-color: var(--border-color);
-    position: absolute;
-    bottom: 0;
-    left: 0;
 }
 .header__logo {
     font-size: 3rem;
@@ -168,6 +174,16 @@ dt+dd {
 }
 .header__links a:hover::after {
     opacity: 1;
+}
+.header__notesDecoration {
+    position: absolute;
+    bottom: 0.3rem;
+}
+.header__notesDecoration span {
+    margin-left: 0.9rem;
+}
+.header__notesDecoration span:first-child {
+    margin-left: 0;
 }
 
 /* Aside Right */
