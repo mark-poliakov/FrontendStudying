@@ -44,6 +44,16 @@
                 style="width: 100%; border-radius: 1rem;">
         </div>
     </main>
+    <script>
+        document.write("<div style=\'padding-left: 2rem;\'><p>MusicHub | Electronic Music</p></div>");
+        window.onload = setTimeout(function(){
+            if (!confirm("Do you listen electronic music?"))
+            {
+                alert("This page is useless to you!");
+                window.location = window.history.back();
+            }
+        }, 1000)
+    </script>
 </body>
 
 </html>

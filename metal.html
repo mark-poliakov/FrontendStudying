@@ -44,11 +44,29 @@
             <li><a href="electronic.html">Electronic Music</a></li>
             <li><a href="metal.html">Metal Music</a></li>
         </ol>
+        <div class="inputBlock">
+            <input class="input" id="artist">
+            <p class="inputDescription">Artist</p>
+        </div>
+        <div class="inputBlock">
+            <input class="input" id="title">
+            <p class="inputDescription">Song Title</p>
+        </div>
+        <div class="inputBlock">
+            <input class="input" id="album">
+            <p class="inputDescription">Song Album</p>
+        </div>
+        <div class="inputBlock">
+            <input class="input" id="link">
+            <p class="inputDescription">Link to music</p>
+        </div>
+        <button class="button" id="AddSongButton">Add New Song to the Table</button>
+        <button class="button" id="RemoveSongButton">Remove Last Added Song</button>
     </aside>
     <main class="main" id="mainMetal">
         <div class="container">
             <h2>Metal music</h2>
-            <table cellspacing="2" cellpadding="5">
+            <table cellspacing="2" cellpadding="5" class="musicTable" id="musicTable__Metal1">
                 <caption>Some metal songs</caption>
                 <colgroup span="1" bgcolor="#E5E5EF"></colgroup>
                 <colgroup span="3" bgcolor="GhostWhite"></colgroup>
@@ -101,6 +119,12 @@
             <img class="metal-image" src="assets/images/metal_music.jpg" alt="Metal Music">
         </div>
     </main>
+    <footer class="footer">
+        <input type="checkbox" class="footer__checkbox" id="strictDeletionCheckbox" checked="True">
+        <button class="footer__button" id="showAboutButton">Show about author</button>
+        <button class="footer__button" id="compareStringsButton">Compare strings</button>
+    </footer>
+    <script src="assets/scripts/script.js"></script>
 </body>
 
 </html>
