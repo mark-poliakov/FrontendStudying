@@ -176,12 +176,17 @@ dt+dd {
 .header__notesDecoration {
     position: absolute;
     bottom: 0.3rem;
+    user-select: none;
 }
 .header__notesDecoration span {
     margin-left: 0.9rem;
+    cursor: pointer;
 }
 .header__notesDecoration span:first-child {
     margin-left: 0;
+}
+.smoothAnimation {
+    transition: color ease-out 0.2s;
 }
 
 /* Aside Right */
@@ -195,6 +200,7 @@ dt+dd {
     padding: 0 1rem;
     margin: var(--aside-right-margin);
     border-radius: var(--aside-right-margin);
+    overflow: hidden;
 }
 .inputBlock {
     margin-bottom: 1rem;
@@ -207,7 +213,7 @@ dt+dd {
     margin: 0 auto;
 }
 .button {
-    border: none;
+    border: 4px solid white;
     color: white;
     background-color: black;
     border-radius: 1rem;
@@ -228,6 +234,11 @@ dt+dd {
     transition: color linear 0.2s;
     color: white;
     text-align: center;
+}
+.aside__menu {
+    transition: background-color linear 0.1s;
+    padding: 1rem 0;
+    border-radius: 2rem;
 }
 
 /* Main */
