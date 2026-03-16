@@ -19,12 +19,16 @@
             <a href="index.html">MusicHub | Main Page</a>
         </div>
     </header>
-    <aside class="aside-right">
+    <aside class="aside-right dragndropContainer">
         <ol type="I">
             <li><a href="classical.html">Classical Music</a></li>
             <li><a href="electronic.html">Electronic Music</a></li>
             <li><a href="metal.html">Metal Music</a></li>
         </ol>
+        <img class="dragndropable" id="pointer1" src="assets/images/music_pointer1.png">
+        <img class="dragndropable" id="pointer2" src="assets/images/music_pointer2.png">
+        <button class="button" id="resetButton">Reset Position of the Pointers</button>
+        <button class="button" id="lockingButton" data-locked="true">Locked</button>
     </aside>
     <main class="main" id="mainClassical">
         <div class="container">
@@ -47,6 +51,7 @@
             <img src="assets/images/classical_music_image1.png" style="width: 100%;">
         </div><!-- /.container -->
     </main>
+    <script src="assets/scripts/dragndrop.js"></script>
 </body>
 
 </html>
