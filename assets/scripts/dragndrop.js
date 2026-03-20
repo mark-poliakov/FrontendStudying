@@ -1,33 +1,57 @@
 function dragndropMousedown(event)
 {
     currentDraggedElement = event.target;
+    draggedElements.push(currentDraggedElement);
 
     currentDraggedElement.style.zIndex = maxZIndex = maxZIndex + 1;
-    document.body.style.cursor = "grab";
 
-    positionCursor.x = event.clientX;
-    positionCursor.y = event.clientY;
+    currentDraggedElement.style.position = "absolute";
+    document.body.appendChild(currentDraggedElement);
+
+    mousePosition.x = event.clientX;
+    mousePosition.y = event.clientY;
+    moveDragndropableAtCursor(event.pageX, event.pageY);
+
+    dragndropableElements.forEach(element => {
+            element.style.pointerEvents = "none";
+    });
+    containers.forEach(element => {
+        element.classList.add("highlighted");
+    });
 }
 function dragndropMousemove(event)
 {
     if (currentDraggedElement == null || !isCursorWithinBoundaries(event))
         return;
-    currentDraggedElement.positionX -= positionCursor.x - event.clientX;
-    currentDraggedElement.positionY -= positionCursor.y - event.clientY;
-    positionCursor.x = event.clientX;
-    positionCursor.y = event.clientY;
-    /* Applying new coordinates no the element */
-    currentDraggedElement.style.left = currentDraggedElement.positionX + "px";
-    currentDraggedElement.style.top = currentDraggedElement.positionY + "px";
+    mousePosition.x = event.clientX;
+    mousePosition.y = event.clientY;
+    moveDragndropableAtCursor(event.pageX, event.pageY);
 }
 function dragndropMouseup(event)
 {
-    if (document.elementFromPoint(event.clientX, event.clientY) === currentDraggedElement)
-        document.body.style.cursor = "pointer";
-    else
-        document.body.style.cursor = "auto";
+    if (currentDraggedElement == null)
+        return;
+    currentDraggedElement.style.display = "none";
+    let element = document.elementFromPoint(event.clientX, event.clientY);
+    if (element && element.classList.contains("dragndropContainer"))
+    {
+        element.classList.add("placedInSuccessfully");
+        setTimeout(function(){
+            element.classList.remove("placedInSuccessfully");
+        }, 0);
+        element.appendChild(currentDraggedElement);
+        currentDraggedElement.style.position = "static";
+    }
+    currentDraggedElement.style.display = "block";
 
     currentDraggedElement = null;
+
+    dragndropableElements.forEach(element => {
+        element.style.pointerEvents = "auto";
+    });
+    containers.forEach(element => {
+        element.classList.remove("highlighted");
+    });
 }
 function dragndropMouseover(event)
 {
@@ -35,37 +59,52 @@ function dragndropMouseover(event)
 }
 function dragndropMouseout(event)
 {
-    document.body.style.cursor = "auto";
+    if (currentDraggedElement == null)
+        document.body.style.cursor = "auto";
 }
-function setInitialPositionLocked(element)
+function dragndropScroll()
 {
-    container = document.querySelector(".dragndropContainer");
-    container.appendChild(element);
-
-    element.style.left = '';
-    element.style.top = '';
-    let position = element.getBoundingClientRect(),
-        positionContainer = container.getBoundingClientRect();
-    element.positionX = position.left - positionContainer.left;
-    element.positionY = position.top - positionContainer.top;
+    if (currentDraggedElement == null)
+        return;
+    moveDragndropableAtCursor(mousePosition.x, mousePosition.y + window.pageYOffset);
 }
 function isCursorWithinBoundaries(event)
 {
-    positionContainer = container.getBoundingClientRect();
+    positionContainer = document.body.getBoundingClientRect();
     return event.clientX > positionContainer.left && event.clientX < positionContainer.right 
         && event.clientY > positionContainer.top && event.clientY < positionContainer.bottom;
 }
-
-let positionCursor = {
+function moveDragndropableAtCursor(pageX, pageY)
+{
+    if (currentDraggedElement == null)
+        return;
+    currentDraggedElement.style.left = pageX - currentDraggedElement.offsetWidth / 2 + "px";
+    currentDraggedElement.style.top = pageY - currentDraggedElement.offsetHeight / 2 + "px";
+}
+let containers = document.querySelectorAll(".dragndropContainer");
+let currentDraggedElement = null;
+let currentContainerOver = null;
+let draggedElements = [];
+let maxZIndex = 10;
+let mousePosition = {
     x: 0,
     y: 0
 };
-let container = document.querySelector(".dragndropContainer");
-let currentDraggedElement = null;
-let maxZIndex = 10;
 
 /* Adding event listeners */
-let dragndropableElements = document.querySelectorAll(".dragndropable");
+window.addEventListener("scroll", dragndropScroll);
+let dragndropableElements = [];
+containers.forEach(element => {
+    let elementChildren = element.querySelectorAll(".dragndropable");
+    elementChildren.forEach(dragndropable => 
+    {
+        dragndropableElements.push(dragndropable);
+        dragndropable.initialContainer = element;
+        let positionAbsolute = element.getBoundingClientRect();
+        dragndropable.style.top = positionAbsolute.top + window.pageYOffset + 5 + "px";
+        dragndropable.style.top = positionAbsolute.left + 5 + "px";
+    });
+}); 
 document.addEventListener("mousemove", dragndropMousemove);
 document.addEventListener("mouseup", dragndropMouseup);
 dragndropableElements.forEach(element => {
@@ -73,77 +112,32 @@ dragndropableElements.forEach(element => {
     element.ondragstart = function() {
         return false;
     }
-
     element.addEventListener("mouseover", dragndropMouseover);
     element.addEventListener("mouseout", dragndropMouseout);
-
-    setInitialPositionLocked(element);
 });
 
-document.getElementById("resetButton").addEventListener("click", function()
+let button = document.getElementById("resetButton");
+button.addEventListener("click", function()
 {
-    document.getElementById("lockingButton").dataset.locked = "true";
-    document.getElementById("lockingButton").textContent = "Locked";
-
-    container = document.querySelector(".dragndropContainer");
-    dragndropableElements.forEach(element => {
-        container.appendChild(element);
-        setInitialPositionLocked(element);
+    draggedElements.forEach(element => {
+        element.initialContainer.appendChild(element);
+        element.style.position = "static";
     });
     currentDraggedElement = null;
 });
-document.getElementById("lockingButton").addEventListener("click", switchLoking);
-function switchLoking(event)
+button.addEventListener("focus", function(event)
 {
-    if (event.target.dataset.locked == "true")
+    let relatedTarget = event.relatedTarget;
+    if (relatedTarget != null)
     {
-        unlockElements();
+        relatedTarget.classList.add("focusLost");
+        setTimeout(function(){
+            relatedTarget.classList.remove("focusLost");
+        }, 500);
     }
-    else
-    {
-        lockElements();
-    }
-}
-function unlockElements()
-{
-    let lockingButton = document.getElementById("lockingButton");
-    if (lockingButton.dataset.locked != "false")
-    {
-        container = document.body;
-        dragndropableElements.forEach(element => {
-            let position = element.getBoundingClientRect();
-            container.appendChild(element);
-            element.positionX = position.left + window.pageXOffset;
-            element.positionY = position.top + window.pageYOffset;
-            element.style.left = element.positionX + "px";
-            element.style.top = element.positionY + "px";
-        });
-        lockingButton.dataset.locked = "false";
-        lockingButton.textContent = "Unlocked";
-    }
-}
-function lockElements()
-{
-    let lockingButton = document.getElementById("lockingButton");
-    if (lockingButton.dataset.locked != "true")
-        {
-        container = document.querySelector(".dragndropContainer");
-        dragndropableElements.forEach(element => {
-            container.appendChild(element);
-            setInitialPositionLocked(element);
-        });
-        lockingButton.dataset.locked = "true";
-        lockingButton.textContent = "Locked";
-    }
-}
+});
 
-/* event.relatedTarget */
-document.querySelector("h2").addEventListener("mouseover", function(event)
-{
-    let previousElement = event.relatedTarget;
-    previousElement.setAttribute("style", "background-color: rgba(255, 255, 255, 0.5");
-    setTimeout(function()
-    {
-        previousElement.removeAttribute("style");
-    }, 500);
-})
+/* Disabling dragging images in page */
+document.querySelectorAll('img').forEach(element => {
+   element.ondragstart = function() { return false; }; 
+});

@@ -1,21 +1,37 @@
 .dragndropable{
-    position: absolute;
-}
-#pointer1, #pointer2 {
+    display: block;
     height: 5rem;
     width: auto;
 }
-#pointer1 {
-    left: 20%;
+.dragndropContainer {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: row wrap;
+    width: 100%;
+    min-height: 6rem;
+    padding: 0.5rem;
+    border: 2px solid black;
+    transition: background-color linear 0.5s, box-shadow linear 0.2s;
 }
-#pointer2 {
-    right: 20%;
+.dragndropContainer > * {
+    margin: 0 0.5rem;
 }
-#lockingButton[data-locked = "true"] {
-    background-color: rgb(60, 0, 0);
-    color: rgb(255, 115, 115);
+.highlighted {
+    background-color: rgb(230, 255, 230);
+    box-shadow: 1px 1px 2px 1px rgb(150, 255, 150), -1px -1px 2px 1px rgb(150, 255, 150);
 }
-#lockingButton[data-locked = "false"] {
-    background-color: rgb(0, 60, 5);
-    color: rgb(115, 255, 115);
+.placedInSuccessfully {
+    background-color: rgb(150, 255, 150);
+    transition: background-color linear 0s;
+}
+#pointer3 {
+    height: 3rem;
+}
+.focusLost {
+    transition: all linear 0.2s;
+    color: green;
+    box-shadow: 0 0 2px 2px green;
+    text-decoration: none;
 }
