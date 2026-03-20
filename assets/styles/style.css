@@ -205,6 +205,9 @@ dt+dd {
     border-radius: var(--aside-right-margin);
     overflow: hidden;
 }
+.aside-right > p {
+    margin-top: 1rem;
+}
 .inputBlock {
     margin-bottom: 1rem;
 }
@@ -232,7 +235,7 @@ dt+dd {
 .button:active {
     border: 4px double white;
 }
-.warningMessage {
+.warningMessage, .message {
     margin: 0 auto;
     transition: color linear 0.2s;
     color: white;

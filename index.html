@@ -25,7 +25,7 @@
             <span>Sol</span>
             <span>La</span>
             <span>Ti</span>
-        </div>    
+        </div>
     </header>
     <aside class="aside-right">
         <ol type="I">
@@ -34,14 +34,15 @@
             <li><a href="metal.html">Metal Music</a></li>
         </ol>
         <div class="aside__menu">
-            <button class="button" data-action="turnLoggingOn">Turn ON Logging</button>
-            <button class="button" data-action="turnLoggingOff">Turn OFF Logging</button>
+            <button class="button" data-action="turnDescriptingOn">Turn ON Describing</button>
+            <button class="button" data-action="turnDescriptingOff">Turn OFF Describing</button>
         </div>
     </aside>
     <main class="main">
         <div class="container">
             <section class="definition">
-                <img src="assets/images/music_image.jfif" width="366" height="550" alt="Music image" align="right" style="margin-left: 1rem;">
+                <img src="assets/images/music_image.jfif" width="366" height="550" alt="Music image" align="right"
+                    style="margin-left: 1rem;">
                 <p style="font-size: 1.2rem;">
                     <b>Му́зика</b> (від грец. μουσική — мистецтво муз) — мистецтво організації музичних звуків,
                     насамперед у часовій (ритмічній), звуковисотній та тембровій шкалі. Музичним може бути
@@ -51,16 +52,18 @@
                 </p>
                 <br>
                 <p>З точки зору класифікації мистецтв музика є:</p>
-                <ul type="circle" class="definition__list">
-                    <li>часовим мистецтвом (музичний твір розгортається та сприймається в часі, так само як і в
+                <ul type="circle" class="definition__list"
+                    data-description="Класифікація музики за різними параметрами">
+                    <li data-description="На відміну від, скажімо, живопису, де картина є фіксованим моментом часу, музика розгортається динамічно в часі">
+                        часовим мистецтвом (музичний твір розгортається та сприймається в часі, так само як і в
                         театрі,
                         літературі,
                         танці, вірші, пісні…)</li>
-                    <li>виконавським мистецтвом (посередником між творчістю та сприймачем є виконавець, так само як
+                    <li data-description="Без виконавця неможливо почути музику, бо нікому буде її відтворювати">виконавським мистецтвом (посередником між творчістю та сприймачем є виконавець, так само як
                         і в
                         танці,
                         театрі)</li>
-                    <li>незображальним мистецтвом (музичні образи в більшості випадків вільні від конкретного
+                    <li data-description="Музика не зображує конкретний предмет, який фізично існує в світі">незображальним мистецтвом (музичні образи в більшості випадків вільні від конкретного
                         відображення
                         дійсності, так само як, наприклад, й архітектурні).</li>
                 </ul>
@@ -126,7 +129,8 @@
                     <tr>
                         <td><img src="assets/images/classical_music_image1.png" alt="Classical Music" width="150"></td>
                         <td><img src="assets/images/electronic_music.jpg" alt="Electronic Music" width="150"></td>
-                        <td><img src="assets/images/metal_music.jpg" alt="Metal Music" width="150" ondblclick="window.location = 'https://mapofmetal.com/'"></td>
+                        <td><img src="assets/images/metal_music.jpg" alt="Metal Music" width="150"
+                                ondblclick="window.location = 'https://mapofmetal.com/'"></td>
                     </tr>
                     <tr>
                         <td><a href="classical.html" data-mouseout>Classical Music</a></td>

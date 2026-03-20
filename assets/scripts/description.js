@@ -28,37 +28,35 @@ function changeDecor(element, color)
     }, 500);
 }
 
-function logEvent(event)
+function descriptionEvent(event)
 {
-    console.log(event);
-    console.log(event.currentTarget);
-    console.log("---------");
+    displayDescription(event.target.dataset.description);
 }
 
 class Menu
 {
     constructor(element)
     {
-        this._logging = false; // default loggin option
+        this._descripting = false; // default description option
         this._element = element;
         element.onclick = this.onClick.bind(this);
     }
-    turnLoggingOn(event)
+    turnDescriptingOn(event)
     {
-        if (!this._logging)
+        if (!this._descripting)
         {
             changeDecor(event.target, "lightgreen");
-            list.addEventListener("click", logEvent);
-            this._logging = true;
+            list.addEventListener("click", descriptionEvent);
+            this._descripting = true;
         }
     }
-    turnLoggingOff(event)
+    turnDescriptingOff(event)
     {
-        if (this._logging)
+        if (this._descripting)
         {
             changeDecor(event.target, "red");
-            list.removeEventListener("click", logEvent);
-            this._logging = false;
+            list.removeEventListener("click", descriptionEvent);
+            this._descripting = false;
         }
     }
     onClick(event)
@@ -91,3 +89,31 @@ document.addEventListener("mouseout", function(event)
         changeDecor(event.target, "yellow");
     }
 });
+
+function displayDescription(messageText)
+{
+    if (messageText == null || messageText == "")
+        return;
+
+    let aside = document.querySelector(".aside-right");
+
+    let message = document.createElement("p");
+    message.innerText = messageText;
+    message.classList.add("message");
+
+    aside.appendChild(message);
+            
+    setTimeout(function()
+    {
+        message.setAttribute("style", "color: black;");
+    }, 0);
+    setTimeout(function() 
+    {
+        message.setAttribute("style", "color: white");
+        setTimeout(function() 
+        {
+            aside.removeChild(message);
+        }, 200);
+    }, 4000);
+    return;
+}
