@@ -1,3 +1,4 @@
+const transitionTimeSeconds = 0.5;
 let decorNotes = document.querySelector(".header__notesDecoration");
 decorNotes.onclick = function(event)
 {
@@ -19,16 +20,16 @@ function changeDecor(element, color)
     element.setAttribute("style", `color: ${color}`);
     setTimeout(function()
     {
-        element.setAttribute("style", "transition: color linear 0.2s;");
+        element.setAttribute("style", `transition: color linear ${transitionTimeSeconds}s;`);
         setTimeout(function()
         {
             element.removeAttribute("style");
             element.isClicked = false;
-        }, 200);
-    }, 500);
+        }, transitionTimeSeconds * 1000);
+    }, 100);
 }
 
-function descriptionEvent(event)
+function descriptionEvent(event) // callback function
 {
     displayDescription(event.target.dataset.description);
 }

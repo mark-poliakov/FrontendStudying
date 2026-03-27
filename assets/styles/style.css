@@ -254,7 +254,7 @@ dt+dd {
     padding: 1rem 0;
 }
 #mainClassical {
-    background-image: url('/assets/images/classical_music.jpg'); 
+    background-image: url('../images/classical_music.jpg'); 
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -262,13 +262,13 @@ dt+dd {
     min-height: 100vh;
 }
 #mainMetal {
-    background-image: url('/assets/images/metal_music_bg.jpg');
+    background-image: url('../images/metal_music_bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }
 #mainElectronic {
-    background-image: url('/assets/images/electronic_music_bg.jpg');
+    background-image: url('../images/electronic_music_bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
